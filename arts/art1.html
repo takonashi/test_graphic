@@ -5,21 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art 1 - Dynamic Art Gallery</title>
     <link rel="stylesheet" href="../css/style.css">
+    <!-- このページ専用のスタイル -->
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden; /* スクロールを無効化 */
+        }
+        /* 全画面ボタンと戻るリンクの配置 */
+        #fullscreen-btn, #back-link {
+            position: absolute;
+            top: 10px;
+            padding: 0.5em 1em;
+            background: #333;
+            color: #fff;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+        #fullscreen-btn { right: 10px; }
+        #back-link { left: 10px; }
+    </style>
     <!-- p5.js を CDN から読み込み -->
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
     <script src="../js/art1.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1><a href="../index.html" style="color:white;text-decoration:none;">Dynamic Art Gallery</a></h1>
-    </header>
-    <main>
-        <h2>Art 1: カラフルな波</h2>
-        <!-- アニメーション用のキャンバスはJS側で生成 -->
-        <p>p5.js を使ったシンプルなアニメーションの例です。</p>
-    </main>
-    <footer>
-        <p><a href="../index.html" style="color:white;text-decoration:none;">戻る</a></p>
-    </footer>
+    <!-- 戻るリンクと全画面ボタンを表示 -->
+    <a id="back-link" href="../index.html">戻る</a>
+    <button id="fullscreen-btn">全画面</button>
 </body>
 </html>
