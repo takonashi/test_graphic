@@ -1,11 +1,20 @@
 // p5.js によるカラフルな波アニメーション
 let yoff = 0.0; // 波形のオフセット
+let canvas;     // 生成したキャンバスを保持
 
 function setup() {
-    // キャンバスを生成し、画面いっぱいに配置
-    let canvas = createCanvas(windowWidth, 400);
-    canvas.parent(document.body.querySelector('main'));
+    // ウインドウサイズでキャンバスを生成し body 直下に配置
+    canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent(document.body);
     noStroke();
+
+    // フルスクリーン切り替えボタンのイベントを設定
+    const btn = document.getElementById('fullscreen-btn');
+    btn.addEventListener('click', () => {
+        // fullscreen() の戻り値は現在の状態。! を付けて反転させる
+        const fs = fullscreen();
+        fullscreen(!fs);
+    });
 }
 
 function draw() {
@@ -27,6 +36,6 @@ function draw() {
 }
 
 function windowResized() {
-    // ウィンドウサイズ変更時にキャンバスサイズを更新
-    resizeCanvas(windowWidth, 400);
+    // ウインドウサイズ変更時にキャンバスを更新
+    resizeCanvas(windowWidth, windowHeight);
 }
