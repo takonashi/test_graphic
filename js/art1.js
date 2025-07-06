@@ -8,12 +8,22 @@ function setup() {
     canvas.parent(document.body);
     noStroke();
 
-    // フルスクリーン切り替えボタンのイベントを設定
+    // 画面上の戻るリンクと全画面ボタンを取得
     const btn = document.getElementById('fullscreen-btn');
+    const back = document.getElementById('back-link');
+
+    // フルスクリーン切り替えボタンのイベントを設定
+    // 一度フルスクリーンに入ったらボタン類は非表示にする
     btn.addEventListener('click', () => {
         // fullscreen() の戻り値は現在の状態。! を付けて反転させる
         const fs = fullscreen();
         fullscreen(!fs);
+
+        // フルスクリーンに入るときにボタンと戻るリンクを非表示にする
+        if (!fs) {
+            btn.style.display = 'none';
+            back.style.display = 'none';
+        }
     });
 }
 
